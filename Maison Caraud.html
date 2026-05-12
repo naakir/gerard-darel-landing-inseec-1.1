@@ -1,0 +1,1266 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Maison Caraud — Le cuir, au juste prix</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --terracotta: #C17B4E;
+    --terracotta-deep: #A6633B;
+    --sable: #F5ECD7;
+    --sable-soft: #EFE4CC;
+    --anthracite: #2D2D2D;
+    --ink: #1a1a1a;
+    --cream: #FAF8F5;
+    --line: rgba(45, 45, 45, 0.12);
+    --line-strong: rgba(45, 45, 45, 0.25);
+    --muted: rgba(45, 45, 45, 0.62);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--cream);
+    color: var(--anthracite);
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  .serif { font-family: 'Playfair Display', Georgia, serif; }
+  .mono  { font-family: 'JetBrains Mono', monospace; }
+
+  /* ---------- NAV ---------- */
+  nav.top {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(250, 248, 245, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav.top .inner {
+    max-width: 1280px; margin: 0 auto;
+    padding: 18px 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 32px;
+  }
+  .brand {
+    display: flex; align-items: baseline; gap: 10px;
+    text-decoration: none; color: var(--ink);
+  }
+  .brand .mark {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600; font-size: 22px;
+    letter-spacing: -0.01em;
+  }
+  .brand .baseline {
+    font-size: 11px; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 0.14em;
+    border-left: 1px solid var(--line-strong);
+    padding-left: 10px;
+  }
+  nav.top ul {
+    display: flex; gap: 32px; list-style: none;
+    font-size: 14px;
+  }
+  nav.top ul a {
+    color: var(--anthracite); text-decoration: none;
+    padding-bottom: 2px;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+  nav.top ul a:hover { border-bottom-color: var(--terracotta); }
+  nav.top .actions { display: flex; align-items: center; gap: 20px; }
+  .icon-btn {
+    background: none; border: none; cursor: pointer;
+    padding: 6px; color: var(--anthracite);
+    display: flex; align-items: center; gap: 6px;
+    font-family: inherit; font-size: 14px;
+  }
+  .icon-btn:hover { color: var(--terracotta); }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    max-width: 1280px; margin: 0 auto;
+    padding: 64px 40px 96px;
+    display: grid; grid-template-columns: 1fr 1.05fr;
+    gap: 64px; align-items: center;
+  }
+  .hero .eyebrow {
+    font-size: 12px; text-transform: uppercase;
+    letter-spacing: 0.22em; color: var(--terracotta);
+    margin-bottom: 28px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .hero .eyebrow::before {
+    content: ""; width: 28px; height: 1px; background: var(--terracotta);
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+    font-size: clamp(48px, 5.4vw, 78px);
+    line-height: 1.02;
+    letter-spacing: -0.022em;
+    color: var(--ink);
+    margin-bottom: 28px;
+    text-wrap: balance;
+  }
+  .hero h1 em {
+    font-style: italic; font-weight: 400;
+    color: var(--terracotta);
+  }
+  .hero .lede {
+    font-size: 18px; line-height: 1.55;
+    color: var(--muted);
+    max-width: 460px;
+    margin-bottom: 40px;
+    text-wrap: pretty;
+  }
+  .hero .ctas {
+    display: flex; gap: 16px; align-items: center;
+    margin-bottom: 56px;
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 16px 28px;
+    border-radius: 2px;
+    font-family: inherit; font-size: 14px; font-weight: 500;
+    letter-spacing: 0.02em;
+    text-decoration: none; cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+  }
+  .btn.primary {
+    background: var(--anthracite); color: var(--cream);
+  }
+  .btn.primary:hover {
+    background: var(--terracotta);
+    transform: translateY(-1px);
+  }
+  .btn.ghost {
+    background: transparent; color: var(--anthracite);
+    border-color: var(--line-strong);
+  }
+  .btn.ghost:hover { border-color: var(--anthracite); }
+  .btn .arrow {
+    transition: transform 0.2s;
+  }
+  .btn:hover .arrow { transform: translateX(3px); }
+
+  .hero-meta {
+    display: flex; gap: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+  }
+  .hero-meta .item .k {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px; font-weight: 500;
+    color: var(--terracotta);
+    line-height: 1;
+  }
+  .hero-meta .item .v {
+    font-size: 12px; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 0.12em;
+    margin-top: 8px;
+  }
+
+  /* Hero image — placeholder, bag-shaped composition */
+  .hero-visual {
+    position: relative; aspect-ratio: 4/5;
+    background: var(--sable);
+    overflow: hidden;
+  }
+  .hero-visual::before {
+    content: "";
+    position: absolute; inset: 0;
+    background-image:
+      repeating-linear-gradient(135deg,
+        transparent 0 18px,
+        rgba(193, 123, 78, 0.06) 18px 19px);
+  }
+  .hero-visual .ph-bag {
+    position: absolute;
+    inset: 18% 22% 22% 22%;
+    background:
+      linear-gradient(180deg, var(--terracotta) 0%, var(--terracotta-deep) 100%);
+    border-radius: 6px 6px 4px 4px;
+    box-shadow:
+      inset 0 -40px 60px rgba(0,0,0,0.18),
+      0 30px 60px -20px rgba(45,45,45,0.35);
+  }
+  .hero-visual .ph-bag::before {
+    /* handle */
+    content: "";
+    position: absolute;
+    top: -34px; left: 28%; right: 28%;
+    height: 50px;
+    border: 4px solid var(--terracotta-deep);
+    border-bottom: none;
+    border-radius: 60px 60px 0 0;
+  }
+  .hero-visual .ph-bag::after {
+    /* stitching */
+    content: "";
+    position: absolute; inset: 14px;
+    border: 1px dashed rgba(245, 236, 215, 0.4);
+    border-radius: 3px;
+  }
+  .hero-visual .ph-tag {
+    position: absolute; bottom: 20px; left: 20px;
+    background: var(--cream);
+    padding: 8px 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--muted);
+    border: 1px solid var(--line);
+  }
+  .hero-visual .ph-price {
+    position: absolute; top: 24px; right: 24px;
+    background: var(--anthracite); color: var(--cream);
+    padding: 10px 16px;
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-style: italic;
+  }
+
+  /* ---------- MARQUEE BANNER ---------- */
+  .ticker {
+    background: var(--anthracite); color: var(--cream);
+    padding: 14px 0;
+    overflow: hidden;
+    border-top: 1px solid var(--anthracite);
+  }
+  .ticker .track {
+    display: flex; gap: 56px;
+    white-space: nowrap;
+    animation: scroll 40s linear infinite;
+    font-size: 13px;
+    letter-spacing: 0.16em; text-transform: uppercase;
+  }
+  .ticker .track span { display: inline-flex; align-items: center; gap: 56px; }
+  .ticker .dot {
+    width: 4px; height: 4px; background: var(--terracotta);
+    border-radius: 50%; display: inline-block;
+  }
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  /* ---------- SECTION GENERICS ---------- */
+  section { padding: 120px 40px; }
+  .container { max-width: 1280px; margin: 0 auto; }
+
+  .section-head {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    margin-bottom: 64px; gap: 64px;
+  }
+  .section-head .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--terracotta);
+    margin-bottom: 16px;
+  }
+  .section-head h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 4vw, 56px);
+    font-weight: 500; line-height: 1.05;
+    letter-spacing: -0.018em; color: var(--ink);
+    max-width: 600px;
+    text-wrap: balance;
+  }
+  .section-head .aside {
+    max-width: 360px; color: var(--muted);
+    font-size: 15px; line-height: 1.6;
+    text-wrap: pretty;
+  }
+
+  /* ---------- COLLECTION ---------- */
+  .collection { background: var(--cream); }
+  .grid-4 {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  .product {
+    cursor: pointer;
+  }
+  .product .img {
+    position: relative;
+    aspect-ratio: 4/5;
+    overflow: hidden;
+    background: var(--sable);
+    margin-bottom: 18px;
+  }
+  .product .img::before {
+    content: "";
+    position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(135deg,
+      transparent 0 14px,
+      rgba(0,0,0,0.04) 14px 15px);
+  }
+  .product .bag {
+    position: absolute;
+    inset: 22% 26% 24% 26%;
+    border-radius: 6px 6px 4px 4px;
+    transition: transform 0.4s ease;
+    box-shadow: 0 20px 40px -12px rgba(45,45,45,0.25),
+                inset 0 -24px 40px rgba(0,0,0,0.15);
+  }
+  .product .bag::before {
+    content: "";
+    position: absolute;
+    top: -22px; left: 30%; right: 30%; height: 30px;
+    border: 3px solid currentColor;
+    border-bottom: none;
+    border-radius: 40px 40px 0 0;
+    opacity: 0.85;
+  }
+  .product:hover .bag { transform: translateY(-6px); }
+  .product .badge {
+    position: absolute; top: 14px; left: 14px;
+    background: var(--cream); color: var(--anthracite);
+    padding: 5px 9px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border: 1px solid var(--line);
+  }
+  .product .ref {
+    position: absolute; bottom: 14px; right: 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; color: var(--muted);
+    letter-spacing: 0.08em;
+  }
+  .product .meta {
+    display: flex; justify-content: space-between; align-items: baseline;
+    gap: 16px;
+  }
+  .product .name {
+    font-family: 'Playfair Display', serif;
+    font-size: 19px; font-weight: 500;
+  }
+  .product .desc {
+    font-size: 13px; color: var(--muted);
+    margin-top: 4px;
+  }
+  .product .price {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-style: italic;
+    white-space: nowrap;
+  }
+  .product .swatches {
+    display: flex; gap: 5px; margin-top: 14px;
+  }
+  .product .swatches .s {
+    width: 14px; height: 14px; border-radius: 50%;
+    border: 1px solid var(--line-strong);
+  }
+
+  /* ---------- STORY ---------- */
+  .story {
+    background: var(--sable);
+  }
+  .story-grid {
+    display: grid; grid-template-columns: 1.1fr 1fr;
+    gap: 80px; align-items: center;
+  }
+  .story-visual {
+    aspect-ratio: 5/6;
+    background: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+  .story-visual::before {
+    content: "";
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 30% 40%, rgba(193, 123, 78, 0.18), transparent 60%),
+      repeating-linear-gradient(90deg,
+        transparent 0 22px,
+        rgba(45,45,45,0.04) 22px 23px);
+  }
+  .story-visual .ph-label {
+    position: absolute; bottom: 24px; left: 24px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--muted);
+    background: var(--cream);
+    padding: 8px 12px;
+    border: 1px solid var(--line);
+  }
+  .story-visual .ph-caption {
+    position: absolute; top: 24px; right: 24px;
+    max-width: 200px;
+    font-family: 'Playfair Display', serif;
+    font-style: italic; font-size: 15px;
+    color: var(--anthracite);
+    background: var(--cream);
+    padding: 14px 16px;
+    line-height: 1.4;
+  }
+  .story-content .quote {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px; line-height: 1.25;
+    font-weight: 400; font-style: italic;
+    color: var(--ink);
+    margin-bottom: 32px;
+    text-wrap: balance;
+  }
+  .story-content .quote::before { content: "« "; color: var(--terracotta); }
+  .story-content .quote::after  { content: " »"; color: var(--terracotta); }
+  .story-content p {
+    color: var(--anthracite); font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 18px;
+    text-wrap: pretty;
+  }
+  .story-content .sig {
+    margin-top: 32px;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .story-content .sig-name {
+    font-family: 'Playfair Display', serif;
+    font-style: italic; font-size: 20px;
+  }
+  .story-content .sig-role {
+    font-size: 12px; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 0.12em;
+  }
+
+  /* ---------- GARANTIES ---------- */
+  .garanties .grid-3 {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .garantie {
+    padding: 48px 32px;
+    border-right: 1px solid var(--line);
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .garantie:last-child { border-right: none; }
+  .garantie .num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: var(--terracotta);
+    letter-spacing: 0.16em;
+  }
+  .garantie .ico {
+    width: 56px; height: 56px;
+    border: 1px solid var(--anthracite);
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 50%;
+    color: var(--anthracite);
+  }
+  .garantie h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px; font-weight: 500;
+    margin-top: 12px;
+  }
+  .garantie p {
+    color: var(--muted); font-size: 14px;
+    line-height: 1.6;
+    text-wrap: pretty;
+  }
+
+  /* ---------- LEAD FORM ---------- */
+  .lead {
+    background: var(--anthracite);
+    color: var(--cream);
+  }
+  .lead .container {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: center;
+  }
+  .lead h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 4vw, 52px);
+    font-weight: 500; line-height: 1.05;
+    margin-bottom: 24px;
+    text-wrap: balance;
+  }
+  .lead h2 em { color: var(--terracotta); font-style: italic; font-weight: 400; }
+  .lead .lede {
+    font-size: 16px; line-height: 1.6;
+    color: rgba(250, 248, 245, 0.7);
+    margin-bottom: 32px;
+    text-wrap: pretty;
+  }
+  .lead ul {
+    list-style: none;
+    display: grid; gap: 12px;
+  }
+  .lead ul li {
+    font-size: 14px;
+    color: rgba(250, 248, 245, 0.85);
+    display: flex; align-items: center; gap: 12px;
+  }
+  .lead ul li::before {
+    content: ""; width: 16px; height: 1px;
+    background: var(--terracotta);
+  }
+
+  .form-card {
+    background: var(--cream); color: var(--anthracite);
+    padding: 40px;
+  }
+  .form-card .hd {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--terracotta);
+    margin-bottom: 8px;
+  }
+  .form-card .title {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px; margin-bottom: 28px;
+  }
+  .field { margin-bottom: 18px; }
+  .field label {
+    display: block;
+    font-size: 12px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+  .field input, .field select {
+    width: 100%;
+    padding: 12px 0;
+    border: none;
+    border-bottom: 1px solid var(--line-strong);
+    background: transparent;
+    font-family: inherit;
+    font-size: 15px;
+    color: var(--anthracite);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .field input:focus, .field select:focus {
+    border-bottom-color: var(--terracotta);
+  }
+  .field.error input { border-bottom-color: #c14e4e; }
+  .field .err {
+    color: #c14e4e; font-size: 11px;
+    margin-top: 6px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .submit {
+    margin-top: 24px;
+    width: 100%;
+    padding: 16px;
+    background: var(--anthracite);
+    color: var(--cream);
+    border: none;
+    font-family: inherit; font-size: 14px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .submit:hover { background: var(--terracotta); }
+  .submit:disabled { opacity: 0.6; cursor: not-allowed; }
+  .consent {
+    font-size: 11px; color: var(--muted);
+    margin-top: 14px; line-height: 1.5;
+  }
+  .success {
+    text-align: center; padding: 40px 0;
+  }
+  .success .check {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--terracotta); color: var(--cream);
+    margin: 0 auto 20px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px;
+  }
+  .success h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; margin-bottom: 10px;
+  }
+  .success p { color: var(--muted); font-size: 14px; }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    background: var(--cream);
+    border-top: 1px solid var(--line);
+    padding: 80px 40px 32px;
+  }
+  footer .container {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 64px;
+  }
+  footer h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--anthracite);
+    margin-bottom: 20px;
+  }
+  footer ul { list-style: none; display: grid; gap: 10px; }
+  footer a {
+    color: var(--muted); font-size: 14px;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  footer a:hover { color: var(--terracotta); }
+  footer .brand-block {
+    max-width: 320px;
+  }
+  footer .brand-block p {
+    color: var(--muted); font-size: 14px; line-height: 1.6;
+    margin: 16px 0;
+  }
+  .footer-bottom {
+    max-width: 1280px; margin: 64px auto 0;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    display: flex; justify-content: space-between;
+    font-size: 12px; color: var(--muted);
+  }
+
+  /* ---------- CHATBOT ---------- */
+  .chat-fab {
+    position: fixed; bottom: 28px; right: 28px;
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    background: var(--anthracite);
+    color: var(--cream);
+    border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 12px 30px -8px rgba(0,0,0,0.4);
+    z-index: 100;
+    transition: transform 0.2s, background 0.2s;
+  }
+  .chat-fab:hover { transform: scale(1.05); background: var(--terracotta); }
+  .chat-fab .pulse {
+    position: absolute; top: -2px; right: -2px;
+    width: 14px; height: 14px;
+    background: var(--terracotta);
+    border-radius: 50%;
+    border: 2px solid var(--cream);
+  }
+
+  .chat-panel {
+    position: fixed; bottom: 28px; right: 28px;
+    width: 400px; height: 600px;
+    max-height: calc(100vh - 56px);
+    background: var(--cream);
+    box-shadow: 0 30px 70px -20px rgba(0,0,0,0.35);
+    z-index: 101;
+    display: flex; flex-direction: column;
+    border: 1px solid var(--line);
+    transform-origin: bottom right;
+    animation: chatIn 0.25s cubic-bezier(.2,.9,.3,1);
+  }
+  @keyframes chatIn {
+    from { transform: scale(0.92) translateY(20px); opacity: 0; }
+    to   { transform: none; opacity: 1; }
+  }
+  .chat-head {
+    padding: 18px 20px;
+    border-bottom: 1px solid var(--line);
+    display: flex; align-items: center; justify-content: space-between;
+    background: var(--cream);
+  }
+  .chat-head .info { display: flex; align-items: center; gap: 12px; }
+  .chat-head .av {
+    width: 36px; height: 36px;
+    background: var(--terracotta); color: var(--cream);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-style: italic; font-size: 16px;
+  }
+  .chat-head .who {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px; font-weight: 500;
+  }
+  .chat-head .status {
+    font-size: 11px; color: var(--muted);
+    display: flex; align-items: center; gap: 6px;
+  }
+  .chat-head .status::before {
+    content: ""; width: 6px; height: 6px;
+    background: #4caf50; border-radius: 50%;
+  }
+  .chat-close {
+    background: none; border: none; cursor: pointer;
+    color: var(--muted); padding: 6px;
+  }
+  .chat-close:hover { color: var(--anthracite); }
+
+  .chat-body {
+    flex: 1; overflow-y: auto;
+    padding: 20px;
+    display: flex; flex-direction: column; gap: 12px;
+    background: var(--sable);
+  }
+  .msg {
+    max-width: 85%;
+    padding: 12px 14px;
+    border-radius: 12px;
+    font-size: 14px;
+    line-height: 1.5;
+    animation: msgIn 0.2s ease;
+  }
+  @keyframes msgIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to   { opacity: 1; transform: none; }
+  }
+  .msg.bot {
+    background: var(--cream);
+    color: var(--anthracite);
+    align-self: flex-start;
+    border: 1px solid var(--line);
+    border-bottom-left-radius: 2px;
+  }
+  .msg.user {
+    background: var(--anthracite);
+    color: var(--cream);
+    align-self: flex-end;
+    border-bottom-right-radius: 2px;
+  }
+  .msg .src {
+    margin-top: 8px; padding-top: 8px;
+    border-top: 1px solid var(--line);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; color: var(--muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .typing {
+    align-self: flex-start;
+    background: var(--cream);
+    padding: 14px 16px;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+    display: flex; gap: 4px;
+  }
+  .typing span {
+    width: 6px; height: 6px;
+    background: var(--terracotta);
+    border-radius: 50%;
+    animation: bounce 1.2s infinite;
+  }
+  .typing span:nth-child(2) { animation-delay: 0.15s; }
+  .typing span:nth-child(3) { animation-delay: 0.3s; }
+  @keyframes bounce {
+    0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+    30% { transform: translateY(-4px); opacity: 1; }
+  }
+
+  .chat-suggest {
+    padding: 0 20px 12px;
+    background: var(--sable);
+    display: flex; flex-wrap: wrap; gap: 6px;
+  }
+  .chat-suggest button {
+    background: var(--cream);
+    border: 1px solid var(--line);
+    padding: 7px 12px;
+    border-radius: 20px;
+    font-family: inherit; font-size: 12px;
+    color: var(--anthracite);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .chat-suggest button:hover {
+    background: var(--anthracite); color: var(--cream); border-color: var(--anthracite);
+  }
+
+  .chat-input {
+    padding: 14px 16px;
+    border-top: 1px solid var(--line);
+    background: var(--cream);
+    display: flex; gap: 8px;
+  }
+  .chat-input input {
+    flex: 1;
+    border: 1px solid var(--line);
+    background: var(--cream);
+    padding: 10px 12px;
+    font-family: inherit; font-size: 14px;
+    color: var(--anthracite);
+    outline: none;
+    border-radius: 4px;
+  }
+  .chat-input input:focus { border-color: var(--terracotta); }
+  .chat-input button {
+    background: var(--anthracite); color: var(--cream);
+    border: none; cursor: pointer;
+    padding: 0 16px;
+    border-radius: 4px;
+    transition: background 0.2s;
+  }
+  .chat-input button:hover { background: var(--terracotta); }
+  .chat-input button:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  .chat-footer {
+    padding: 8px 16px 10px;
+    background: var(--cream);
+    border-top: 1px solid var(--line);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: center;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 960px) {
+    .hero, .story-grid, .lead .container, footer .container { grid-template-columns: 1fr; gap: 48px; }
+    nav.top ul { display: none; }
+    .grid-4 { grid-template-columns: repeat(2, 1fr); }
+    .garanties .grid-3 { grid-template-columns: 1fr; }
+    .garantie { border-right: none; border-bottom: 1px solid var(--line); }
+    .garantie:last-child { border-bottom: none; }
+    section { padding: 80px 24px; }
+    nav.top .inner { padding: 16px 24px; }
+    .hero { padding: 40px 24px 60px; }
+    .chat-panel { width: calc(100vw - 24px); right: 12px; bottom: 12px; height: calc(100vh - 24px); }
+  }
+</style>
+
+<script type="application/json" id="brand-kb">
+{
+  "products": [
+    {"ref": "Le 32", "type": "Sac à main", "price": 240, "material": "cuir grainé Bastin", "colors": ["caramel", "noir", "cognac", "fauve", "kaki", "écru"], "use": "quotidien, bureau, ville"},
+    {"ref": "Le 48", "type": "Cabas", "price": 320, "material": "cuir lisse pleine fleur", "colors": ["noir", "havane", "écru"], "use": "travail, voyage court, format A4"},
+    {"ref": "Le 17", "type": "Pochette ceinture", "price": 145, "material": "cuir grainé", "colors": ["noir", "caramel", "cognac"], "use": "sortie, week-end, mains libres"},
+    {"ref": "Le 64", "type": "Sac à dos", "price": 390, "material": "cuir tanné végétal", "colors": ["cognac", "noir", "anthracite"], "use": "voyage, travail nomade, ordinateur 14\""}
+  ],
+  "faq": [
+    {"q": "entretien cuir grainé", "a": "Une à deux fois par an, applique un baume nourrissant naturel (sans silicone) avec un chiffon doux. Évite l'eau et les sources de chaleur directe. Si ton sac prend la pluie, laisse-le sécher à l'air libre, jamais au radiateur."},
+    {"q": "entretien cuir lisse", "a": "Brosse douce une fois par mois pour dépoussiérer, baume nourrissant deux fois par an. Le cuir lisse se patine vite — c'est normal et voulu, ça raconte ton sac."},
+    {"q": "garantie", "a": "Garantie à vie sur la couture et la quincaillerie. Si une couture lâche ou une boucle casse, on répare gratuitement dans notre atelier à Graulhet. Tu nous renvoies le sac, on s'occupe du reste."},
+    {"q": "retours", "a": "30 jours pour changer d'avis, sans justification. Retour gratuit en boutique ou par la poste. Le sac doit être en état neuf, dans son dustbag."},
+    {"q": "livraison", "a": "Livraison gratuite en France dès 150€, sinon 6€. Expédition sous 48h ouvrées. Click & collect possible dans nos 3 boutiques (Paris, Lyon, Bordeaux)."},
+    {"q": "boutiques", "a": "Trois adresses : Paris 3e (rue de Bretagne), Lyon 2e (rue Auguste-Comte), Bordeaux centre (rue Sainte-Catherine). Ouvert du mardi au samedi, 10h-19h."},
+    {"q": "fidélité", "a": "Le Cercle Caraud : 5% cashback à chaque achat, accès aux ventes privées, atelier découverte du cuir une fois par an. Inscription gratuite en boutique ou en ligne."},
+    {"q": "fabrication", "a": "Tout est fait à Graulhet, dans le Tarn — la capitale française de la maroquinerie depuis le Moyen Âge. Nos artisans travaillent à la main, par petites séries. Les cuirs viennent de tanneries françaises et italiennes."},
+    {"q": "tailles", "a": "Pour le bureau, regarde Le 48 (cabas A4). Pour le quotidien sans laptop, Le 32. Si tu cherches les mains libres, la pochette Le 17. Pour le voyage et l'ordinateur, Le 64."}
+  ],
+  "brand": {
+    "name": "Maison Caraud",
+    "founder": "Léa Caraud",
+    "tagline": "Le cuir, au juste prix",
+    "founded": 2019,
+    "city": "Graulhet, Tarn",
+    "values": ["bien fait", "durable", "honnête", "français", "vrai", "juste"]
+  }
+}
+</script>
+
+</head>
+<body>
+
+<nav class="top">
+  <div class="inner">
+    <a href="#" class="brand">
+      <span class="mark">Maison Caraud</span>
+      <span class="baseline">depuis 2019 · Graulhet</span>
+    </a>
+    <ul>
+      <li><a href="#collection">Collection</a></li>
+      <li><a href="#story">L'atelier</a></li>
+      <li><a href="#garanties">Garanties</a></li>
+      <li><a href="#boutiques">Boutiques</a></li>
+      <li><a href="#cercle">Le Cercle</a></li>
+    </ul>
+    <div class="actions">
+      <button class="icon-btn" aria-label="Recherche">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.3"/><path d="M11 11l3 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+      </button>
+      <button class="icon-btn" aria-label="Compte">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5.5" r="2.5" stroke="currentColor" stroke-width="1.3"/><path d="M3 13c0-2.5 2.2-4 5-4s5 1.5 5 4" stroke="currentColor" stroke-width="1.3"/></svg>
+      </button>
+      <button class="icon-btn" aria-label="Panier">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 4h10l-1 9H4L3 4z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M6 4V3a2 2 0 014 0v1" stroke="currentColor" stroke-width="1.3"/></svg>
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px;">(0)</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div>
+    <div class="eyebrow">Nouvelle saison · Hiver 26</div>
+    <h1>Le cuir,<br/><em>au juste prix.</em></h1>
+    <p class="lede">Des sacs en cuir français, fabriqués à Graulhet par des artisans qui savent ce qu'ils font. Pas de marges absurdes. Pas de mots pompeux. Juste du bon cuir, bien coupé, bien cousu.</p>
+    <div class="ctas">
+      <a href="#collection" class="btn primary">
+        Découvrir la collection
+        <svg class="arrow" width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5h12m0 0L9 1m4 4L9 9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+      </a>
+      <a href="#story" class="btn ghost">L'histoire de Léa</a>
+    </div>
+    <div class="hero-meta">
+      <div class="item">
+        <div class="k">100%</div>
+        <div class="v">Fabriqué en France</div>
+      </div>
+      <div class="item">
+        <div class="k">à vie</div>
+        <div class="v">Garantie couture</div>
+      </div>
+      <div class="item">
+        <div class="k">2 800</div>
+        <div class="v">Clientes fidèles</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="ph-bag"></div>
+    <div class="ph-tag">Le 32 · cuir grainé caramel</div>
+    <div class="ph-price">€240</div>
+  </div>
+</section>
+
+<div class="ticker">
+  <div class="track">
+    <span>Fabriqué à Graulhet, Tarn<span class="dot"></span></span>
+    <span>Livraison offerte dès 150€<span class="dot"></span></span>
+    <span>Garantie à vie sur la couture<span class="dot"></span></span>
+    <span>Retours 30 jours<span class="dot"></span></span>
+    <span>Cercle Caraud · 5% cashback<span class="dot"></span></span>
+    <span>Fabriqué à Graulhet, Tarn<span class="dot"></span></span>
+    <span>Livraison offerte dès 150€<span class="dot"></span></span>
+    <span>Garantie à vie sur la couture<span class="dot"></span></span>
+    <span>Retours 30 jours<span class="dot"></span></span>
+    <span>Cercle Caraud · 5% cashback<span class="dot"></span></span>
+  </div>
+</div>
+
+<section id="collection" class="collection">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="label">— 01 / La gamme</div>
+        <h2>Quatre sacs. Pensés pour durer.</h2>
+      </div>
+      <div class="aside">Pas de collection capsule tous les mois. Quatre formats qu'on travaille en profondeur, dans des cuirs choisis pour vieillir bien.</div>
+    </div>
+
+    <div class="grid-4">
+      <article class="product">
+        <div class="img">
+          <span class="badge">Best-seller</span>
+          <div class="bag" style="color: #A6633B; background: linear-gradient(180deg, #C17B4E 0%, #A6633B 100%);"></div>
+          <span class="ref">N°32 / 2019</span>
+        </div>
+        <div class="meta">
+          <div>
+            <div class="name">Le 32</div>
+            <div class="desc">Sac à main · cuir grainé</div>
+          </div>
+          <div class="price">€240</div>
+        </div>
+        <div class="swatches">
+          <span class="s" style="background:#C17B4E"></span>
+          <span class="s" style="background:#2D2D2D"></span>
+          <span class="s" style="background:#7a4828"></span>
+          <span class="s" style="background:#9c6f42"></span>
+          <span class="s" style="background:#5e6240"></span>
+          <span class="s" style="background:#e8dfc8"></span>
+        </div>
+      </article>
+
+      <article class="product">
+        <div class="img">
+          <span class="badge">Format A4</span>
+          <div class="bag" style="color: #1f1f1f; background: linear-gradient(180deg, #3a3a3a 0%, #1f1f1f 100%); inset: 18% 22% 20% 22%;"></div>
+          <span class="ref">N°48 / 2020</span>
+        </div>
+        <div class="meta">
+          <div>
+            <div class="name">Le 48</div>
+            <div class="desc">Cabas · cuir lisse pleine fleur</div>
+          </div>
+          <div class="price">€320</div>
+        </div>
+        <div class="swatches">
+          <span class="s" style="background:#2D2D2D"></span>
+          <span class="s" style="background:#8a5a35"></span>
+          <span class="s" style="background:#e8dfc8"></span>
+        </div>
+      </article>
+
+      <article class="product">
+        <div class="img">
+          <span class="badge">Mains libres</span>
+          <div class="bag" style="color: #1f1f1f; background: linear-gradient(180deg, #3a3a3a 0%, #1f1f1f 100%); inset: 38% 24% 38% 24%; border-radius: 4px;"></div>
+          <span class="ref">N°17 / 2021</span>
+        </div>
+        <div class="meta">
+          <div>
+            <div class="name">Le 17</div>
+            <div class="desc">Pochette ceinture · cuir grainé</div>
+          </div>
+          <div class="price">€145</div>
+        </div>
+        <div class="swatches">
+          <span class="s" style="background:#2D2D2D"></span>
+          <span class="s" style="background:#C17B4E"></span>
+          <span class="s" style="background:#7a4828"></span>
+        </div>
+      </article>
+
+      <article class="product">
+        <div class="img">
+          <span class="badge">Nouveau</span>
+          <div class="bag" style="color: #6b4424; background: linear-gradient(180deg, #8a5a35 0%, #6b4424 100%); inset: 18% 26% 20% 26%; border-radius: 8px 8px 6px 6px;"></div>
+          <span class="ref">N°64 / 2026</span>
+        </div>
+        <div class="meta">
+          <div>
+            <div class="name">Le 64</div>
+            <div class="desc">Sac à dos · cuir tanné végétal</div>
+          </div>
+          <div class="price">€390</div>
+        </div>
+        <div class="swatches">
+          <span class="s" style="background:#8a5a35"></span>
+          <span class="s" style="background:#2D2D2D"></span>
+          <span class="s" style="background:#4a4a4a"></span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="story" class="story">
+  <div class="container story-grid">
+    <div class="story-visual">
+      <div class="ph-caption">Léa, dans l'atelier de Graulhet — septembre 2025</div>
+      <div class="ph-label">[ portrait fondatrice / atelier ]</div>
+    </div>
+    <div class="story-content">
+      <div class="label" style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--terracotta); margin-bottom:16px;">— 02 / L'atelier</div>
+      <p class="quote">Mon père était sellier. J'ai grandi avec l'odeur du cuir et l'idée qu'un sac, ça se garde dix ans.</p>
+      <p>Maison Caraud est née en 2019 d'un constat simple : entre les marques de centre commercial qui vendent du PVC à 80€ et les maisons de luxe qui facturent 2 000€ pour le même cuir que nous, il manquait quelque chose au milieu.</p>
+      <p>Quelque chose d'honnête. Du cuir français, du tannage qu'on connaît, des artisans qu'on paie correctement, à Graulhet — la capitale du cuir depuis 800 ans. Et un prix qui correspond à ce qu'il y a vraiment dans le sac.</p>
+      <div class="sig">
+        <div>
+          <div class="sig-name">Léa Caraud</div>
+          <div class="sig-role">Fondatrice · directrice artistique</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="garanties" class="garanties">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="label">— 03 / Nos engagements</div>
+        <h2>Trois promesses, écrites noir sur blanc.</h2>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="garantie">
+        <div class="num">01</div>
+        <div class="ico">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Garantie à vie</h3>
+        <p>Une couture qui lâche, une boucle qui casse — on répare gratuitement dans notre atelier à Graulhet. Pas de date limite, pas de petites lignes.</p>
+      </div>
+      <div class="garantie">
+        <div class="num">02</div>
+        <div class="ico">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 3h14v18l-7-3-7 3V3z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M9 8h6M9 12h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Cuir français</h3>
+        <p>Tannage à Graulhet et Mazamet, dans le Tarn. Sous-produit de la filière viande, jamais d'élevage dédié. Tannage végétal ou chrome 3, jamais chrome 6.</p>
+      </div>
+      <div class="garantie">
+        <div class="num">03</div>
+        <div class="ico">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 12a9 9 0 1018 0 9 9 0 00-18 0z" stroke="currentColor" stroke-width="1.4"/><path d="M8 12l3 3 5-6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Retours 30 jours</h3>
+        <p>Tu changes d'avis ? Retour gratuit, sans avoir à te justifier. En boutique ou par la poste, on s'occupe de tout.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cercle" class="lead">
+  <div class="container">
+    <div>
+      <div class="label" style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--terracotta); margin-bottom:16px;">— 04 / Le Cercle Caraud</div>
+      <h2>Rejoins <em>le Cercle.</em></h2>
+      <p class="lede">Pas une newsletter de plus. Un programme pour celles et ceux qui aiment garder leurs sacs longtemps — et qu'on remercie pour ça.</p>
+      <ul>
+        <li>5% cashback à chaque commande, dès le premier achat</li>
+        <li>Ventes privées deux fois par an, avant tout le monde</li>
+        <li>Un atelier découverte du cuir offert chaque année</li>
+        <li>Priorité sur les nouveaux modèles en édition limitée</li>
+        <li>Un cadeau d'anniversaire choisi par Léa</li>
+      </ul>
+    </div>
+    <div id="lead-form-root"></div>
+  </div>
+</section>
+
+<footer id="boutiques">
+  <div class="container">
+    <div class="brand-block">
+      <div class="brand">
+        <span class="mark">Maison Caraud</span>
+      </div>
+      <p>Maroquinerie française. Fabriquée à Graulhet, Tarn — la capitale du cuir depuis le Moyen Âge. Bien faite, juste prix.</p>
+      <div style="display:flex; gap:14px; margin-top:20px;">
+        <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+        <a href="#" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 014 0v4M12 10v7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></a>
+      </div>
+    </div>
+    <div>
+      <h4>Boutiques</h4>
+      <ul>
+        <li><a href="#">Paris 3e · rue de Bretagne</a></li>
+        <li><a href="#">Lyon 2e · rue Auguste-Comte</a></li>
+        <li><a href="#">Bordeaux · rue Sainte-Catherine</a></li>
+        <li><a href="#">Click & collect</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Maison</h4>
+      <ul>
+        <li><a href="#">L'atelier de Graulhet</a></li>
+        <li><a href="#">Nos cuirs</a></li>
+        <li><a href="#">Le Cercle Caraud</a></li>
+        <li><a href="#">Presse</a></li>
+        <li><a href="#">Nous rejoindre</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Service client</h4>
+      <ul>
+        <li><a href="#">Guide d'entretien</a></li>
+        <li><a href="#">Livraison & retours</a></li>
+        <li><a href="#">Garantie à vie</a></li>
+        <li><a href="#">Nous contacter</a></li>
+        <li><a href="#">FAQ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 Maison Caraud · SIREN 851 234 567</div>
+    <div>Mentions légales · Confidentialité · CGV</div>
+  </div>
+</footer>
+
+<!-- Chatbot RAG n8n — connecté au workflow Sophie / Gérard Darel -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" />
+<style>
+  /* Habillage Maison Caraud du widget n8n */
+  :root {
+    --chat--color-primary: #C17B4E;
+    --chat--color-primary-shade-50: #B36F44;
+    --chat--color-primary-shade-100: #A6633B;
+    --chat--color-secondary: #2D2D2D;
+    --chat--color-secondary-shade-50: #1f1f1f;
+    --chat--color-white: #FAF8F5;
+    --chat--color-light: #F5ECD7;
+    --chat--color-light-shade-50: #EFE4CC;
+    --chat--color-light-shade-100: #e8dfc8;
+    --chat--color-medium: rgba(45, 45, 45, 0.25);
+    --chat--color-dark: #2D2D2D;
+    --chat--color-disabled: rgba(45, 45, 45, 0.4);
+    --chat--color-typing: #C17B4E;
+
+    --chat--spacing: 1rem;
+    --chat--border-radius: 2px;
+    --chat--transition-duration: 0.18s;
+
+    --chat--window--width: 400px;
+    --chat--window--height: 600px;
+
+    --chat--header-height: auto;
+    --chat--header--padding: 18px 20px;
+    --chat--header--background: #FAF8F5;
+    --chat--header--color: #2D2D2D;
+    --chat--header--border-bottom: 1px solid rgba(45, 45, 45, 0.12);
+    --chat--heading--font-size: 16px;
+    --chat--subtitle--font-size: 11px;
+    --chat--subtitle--line-height: 1.4;
+
+    --chat--textarea--height: 50px;
+
+    --chat--message--font-size: 14px;
+    --chat--message--padding: 12px 14px;
+    --chat--message--border-radius: 12px;
+    --chat--message-line-height: 1.5;
+    --chat--message--bot--background: #FAF8F5;
+    --chat--message--bot--color: #2D2D2D;
+    --chat--message--bot--border: 1px solid rgba(45, 45, 45, 0.12);
+    --chat--message--user--background: #2D2D2D;
+    --chat--message--user--color: #FAF8F5;
+    --chat--message--user--border: none;
+    --chat--messages-list--padding: 20px;
+
+    --chat--toggle--background: #2D2D2D;
+    --chat--toggle--hover--background: #C17B4E;
+    --chat--toggle--active--background: #A6633B;
+    --chat--toggle--color: #FAF8F5;
+    --chat--toggle--size: 64px;
+
+    --chat--body--background: #F5ECD7;
+    --chat--input--background: #FAF8F5;
+    --chat--input--border: 1px solid rgba(45, 45, 45, 0.12);
+    --chat--input--text-color: #2D2D2D;
+    --chat--input--border-radius: 4px;
+    --chat--input--send--button--background: #2D2D2D;
+    --chat--input--send--button--background-hover: #C17B4E;
+    --chat--input--send--button--color: #FAF8F5;
+  }
+  #n8n-chat, .chat-window, .chat-window-wrapper {
+    font-family: 'Inter', -apple-system, sans-serif;
+  }
+  .chat-heading, .chat-header h1 {
+    font-family: 'Playfair Display', Georgia, serif !important;
+    font-weight: 500 !important;
+  }
+</style>
+<script type="module">
+  import { createChat } from "https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js";
+  createChat({
+    webhookUrl: "https://rayanbskr1.app.n8n.cloud/webhook/gerard-darel-rag-chat/chat",
+    mode: "window",
+    chatInputKey: "chatInput",
+    chatSessionKey: "sessionId",
+    showWelcomeScreen: true,
+    defaultLanguage: "fr",
+    initialMessages: ["Bonjour ! 👋\nJe suis Sophie. Comment puis-je vous aider aujourd'hui ?"],
+    i18n: {
+      fr: {
+        title: "Sophie - Maison Caraud",
+        subtitle: "Service Client Maison Caraud",
+        footer: "",
+        getStarted: "Nouvelle conversation",
+        inputPlaceholder: "Posez votre question..."
+      }
+    }
+  });
+</script>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="lead-form.jsx"></script>
+
+</body>
+</html>
